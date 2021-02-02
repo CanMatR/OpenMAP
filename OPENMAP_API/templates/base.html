@@ -1,0 +1,25 @@
+{% load static %}
+{% load tz %}
+{% localtime on %}
+
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" href="{% static 'django_tables2/themes/paleblue/css/screen.css' %}" />
+		<link rel="stylesheet" href="{% static 'map.css' %}" />
+		<title>{% block title %}MAP Orchestrator{% endblock %}</title>
+	</head>
+
+	<body>
+		<nav>
+			<ul>
+				{% block breadcrumbs %}{% endblock %}
+				<li style="float:right"><a href="{% url 'logout' %}">logout</a></li>
+			</ul>
+		</nav>
+		<h1>{% block pageheader %}{% endblock %}</h1>
+		{% block content %}{% endblock %}
+	</body>
+</html>
+
+{% endlocaltime %}

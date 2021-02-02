@@ -1,0 +1,38 @@
+nav {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+nav ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: SlateBlue;
+	width: 100%
+}
+
+nav ul li {
+	float: left;
+	border-right: 1px solid LightGray;
+}
+
+nav ul li:last-child {
+	border-right: none;
+	border-left: 1px solid LightGray;
+}
+
+nav ul li a {
+	display: block;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+nav ul li a:link {
+	color: white
+}
+
+nav ul li a:visited {
+	color: white
+}

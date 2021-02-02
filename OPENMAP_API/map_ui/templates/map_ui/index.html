@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}MAP List{% endblock %}
+{% block  pageheader %}{% if map_list %}MAPs{% endif %}{% endblock %}
+
+{% block content %}
+{% if map_list %}
+	<ul>
+	{% for map in map_list %}
+	<li><a href="{% url 'ui:campaign_index' map.name %}/">{{ map.name }}</a></li>
+	{% endfor %}
+	</ul>
+{% else %}
+	<p>No MAPs available.</p>
+{% endif %}
+{% endblock %}

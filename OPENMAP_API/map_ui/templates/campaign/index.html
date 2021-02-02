@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Campaign List{% endblock %}
+{% block pageheader %}{% if campaign_list %}Campaigns{% endif %}{% endblock %}
+{% block breadcrumbs %}
+	<li><a href="{% url 'ui:map_index' %}">&larr; MAP List</a></li>
+{% endblock %}
+
+{% block content %}
+	{% if campaign_list %}
+		<ul>
+		{% for campaign in campaign_list %}
+		<li><a href="{% url 'ui:campaign_detail' campaign.name %}/">{{ campaign.name }}</a></li>
+		{% endfor %}
+		</ul>
+	{% else %}
+		<p>No campaign available.</p>
+	{% endif %}
+
+	<form action={% url 'ui:campaign_new_for_map' for_map.name %} method="get">
+		<input type="submit" value="New Campaign">
+	</form>
+{% endblock %}

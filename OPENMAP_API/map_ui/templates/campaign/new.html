@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}New Campaign{% endblock %}
+{% block pageheader %}New Campaign{% endblock %}
+
+{% block content %}
+	{% if for_map %}
+	<form action={% url 'ui:campaign_new_for_map' for_map.name %} method="post">
+		{% csrf_token %}
+		<table>
+			{{ form.as_table }}
+		</table>
+		<input type="submit" name="save_campaign" value="Submit"/>
+		<a href="{% url 'ui:campaign_index' for_map.name %}"><input type="button" name="cancel" value="Cancel"/></a>
+	{% else %}
+	<form action={% url 'ui:campaign_new' %} method="post">
+		{% csrf_token %}
+		<table>
+			{{ form.as_table }}
+		</table>
+		<input type="submit" name="save_campaign" value="Submit"/>
+		<a href="{% url 'ui:map_index' %}"><input type="button" name="cancel" value="Cancel"/></a>
+	</form>
+	{% endif %}
+{% endblock %}

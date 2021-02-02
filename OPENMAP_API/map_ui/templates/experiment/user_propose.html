@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Propose User-Specified Experiment{% endblock %}
+{% block pageheader %}Propose User-Specified Experiment{% endblock %}
+
+{% block content %}
+	<form action={% url 'ui:user_propose' campaign.name %} method="post">
+		{% csrf_token %}
+		<table>
+			{{ exp_form.as_table }}
+			{% if inp_forms %}
+				{{ inp_forms.management_form }} {{ inp_forms.non_form_errors }}
+				{% for inp_form in inp_forms %}
+					<tr> {{ inp_form.campaign_name }} {{ inp_form.non_field_errors }} {{ inp_form.input_name.errors }} {{ inp_form.input_value.errors}}
+						<th> Input </th>
+						<td> {{ inp_form.input_name }} </td>
+						<td> {{ inp_form.input_value }} </td>
+					</tr>
+				{% endfor %}
+			{% endif %}
+		</table>
+		<input type="submit" name="propose" value="Propose Experiment"/>
+		<a href="{% url 'ui:campaign_detail' campaign.name %}"><input type="button" name="cancel" value="Cancel"/></a>
+	</form>
+{% endblock %}
